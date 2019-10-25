@@ -38,4 +38,4 @@ Triggers are in the format `[prefix]text[suffix]`, that is, all triggers must ha
 
 If you ever want to change a puppet's trigger, simply use `rp!trig <puppet> <newtrigger>`.
 
-## Managing Your Puppets
+TODO: Add rest of documentation
