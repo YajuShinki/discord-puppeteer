@@ -15,7 +15,6 @@ Puppeteer Roleplay Manager
 
 **Moderators will be able to...**
  * Change Puppeteer's command prefix.
- * Modify and delete other users' puppets.
  * Delete others' puppet messages.
  * Restrict puppet usage on a per-room/per-user basis.
    * Ban users from using puppets permanently, or for a set amount of time.
