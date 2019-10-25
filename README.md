@@ -4,6 +4,7 @@ Puppeteer Roleplay Manager
 
 **Users will be able to...**
  * Create, list, modify, and delete puppets and groups of puppets.
+ * Hide puppets from servers/have them shown only on whitelisted servers.
  * Search for puppets by name and description.
  * Assign optional profile pictures and descriptions to puppets.
    * Change/assign the following puppet attributes: Name, profile picture, description.
@@ -21,6 +22,7 @@ Puppeteer Roleplay Manager
    * Ban certain puppets from posting in certain rooms.
    * Set rooms as IC-only/OOC-only, and enable/disable commands in specific channels.
  * Have Puppeteer output a log to a channel.
+ * Set whether or not puppets must be approved before being used.
 
 ## Creating & Using Puppets
 To create a puppet, use `rp!new <name> [shortID] <trigger>`. If your puppet's name contains spaces, enclose it with double quotes. Shorthand IDs can be used instead of a puppet's full name in commands. They are optional, but recommened for puppets with difficult-to-type names (such as those with foreign characters). Finally, specify your trigger at the end.
