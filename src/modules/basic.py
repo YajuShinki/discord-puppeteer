@@ -14,6 +14,7 @@ class Debug(commands.Cog):
     @commands.command()
     async def find(self, ctx, arg):
         embed = Embed()
+        
 
     @commands.command()
     async def info(self, ctx, arg):

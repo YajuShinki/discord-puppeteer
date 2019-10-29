@@ -12,6 +12,11 @@ import coloredlogs
 class Client(commands.Bot):
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
+
+        #Additional kwargs for debug/local modes
+        self.debug = true if "debug" in kwargs and kwargs["debug"] else false
+        self.local = true if "local" in kwargs and kwargs["local"] else false
+
     
     async def on_ready(self):
         logging.info("%s is online!", self.user.name)
@@ -21,7 +26,7 @@ class Client(commands.Bot):
         for module in listdir("src/modules"):
             if not module.startswith("__"):
                 self.load_extension(f"modules.{module[:-3]}")
-                logging.info("Loaded module: '%s'", module)
+                logging.info("Loaded module: '%s'", module)q
 
 def main() -> None:
     coloredlogs.DEFAULT_FIELD_STYLES.update({'funcName': {'color': 'cyan'}})
