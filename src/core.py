@@ -12,15 +12,17 @@ class Client(commands.Bot):
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
 
-        #Additional kwargs for local/database mode
-        self.local_mode = "local" in kwargs and kwargs["local"]
+        #Additional kwargs for database
         self.db_address = kwargs["address"] if "address" in kwargs else None
         self.db_username = kwargs["username"] if "username" in kwargs else None
         self.db_password = kwargs["password"] if "password" in kwargs else None
+
+        self.db_conn = None
     
     async def on_ready(self):
         logging.info("%s is online!", self.user.name)
-        logging.info("Running in %s mode.", "local" if self.local_mode else "public")
+        logging.info("Connecting to PostgreSQL server...")
+        #TODO Connect to database
         
 
     def load_modules(self):
@@ -42,7 +44,6 @@ def main() -> None:
     client = Client(
         command_prefix=config["prefix"] if "prefix" in config else "rp!", 
         owner_ids=config["owners"] if "owners" in config else [],
-        local=config["local"] if "local" in config else False, 
         address=config["db-address"] if "db-address" in config else None,
         username=config["db-username"] if "db-username" in config else None,
         password=config["db-password"] if "db-password" in config else None
