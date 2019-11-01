@@ -14,25 +14,19 @@ class Client(commands.Bot):
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
 
-        #Additional kwargs for database
+        # Additional kwargs for database
         self.db_address = kwargs["address"] if "address" in kwargs else None
-        self.db_username = kwargs["username"] if "username" in kwargs else None
-        self.db_password = kwargs["password"] if "password" in kwargs else None
         self.db_conn = None
 
         self.started_up = False
     
     async def on_ready(self):
         if not self.started_up:
-            logging.info("%s is online!", self.user.name)
             logging.info("Connecting to PostgreSQL server...")
-            self.db_conn = await asyncpg.connect(
-                self.db_address, 
-                user=self.db_username, 
-                password=self.db_password
-            )
+            self.db_conn = await asyncpg.connect(self.db_address)
             logging.info("Connection established!")
             self.started_up = True
+            logging.info("%s is online!", self.user.name)
         
 
     def load_modules(self):
@@ -54,9 +48,7 @@ def main():
     client = Client(
         command_prefix=config["prefix"] if "prefix" in config.keys() else "rp!", 
         owner_ids=config["owners"] if "owners" in config.keys() else [],
-        address=config["db-address"] if "db-address" in config.keys() else None,
-        username=config["db-username"] if "db-username" in config.keys() else None,
-        password=config["db-password"] if "db-password" in config.keys() else None
+        address=config["db-address"] if "db-address" in config.keys() else None
         )
     client.load_modules()
     client.run(config["token"])
